@@ -1,13 +1,11 @@
 (define (get-min-distance nums target start)
-  (let loop ([ls nums]
-             [i 0]
+  (let loop ([i 0]
+             [ls nums]
              [best-dist 1010])
     (if (null? ls)
         best-dist
-        (loop (rest ls)
-              (add1 i)
-              (let ([i-dist (abs (- i start))])
-                (if (and (= (first ls) target)
-                         (< i-dist best-dist))
-                    i-dist
-                    best-dist))))))
+        (loop (add1 i)
+              (rest ls)
+              (if (= (first ls) target)
+                  (min best-dist (abs (- i start)))
+                  best-dist)))))
