@@ -1,0 +1,1 @@
+class Solution: maxRotateFunction = lambda _, nums: (lambda n, sigma: max(accumulate(reversed(nums), (lambda f, num: f + sigma - n * num), initial=sum(starmap(mul, enumerate(nums))))))(len(nums), sum(nums))
