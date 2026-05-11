@@ -1,0 +1,10 @@
+(define #|/contract||# (separate-digits nums)
+  ;(-> (listof exact-integer?) (listof exact-integer?))
+  (define (sep num)
+    (define (internal num)
+      (if (= num 0)
+          null
+          (let-values ([(quo rem) (quotient/remainder num 10)])
+            (cons rem (internal quo)))))
+    (reverse (internal num)))
+  (apply append (map sep nums)))
