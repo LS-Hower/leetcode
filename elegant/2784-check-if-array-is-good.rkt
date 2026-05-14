@@ -1,0 +1,5 @@
+(define/contract (is-good nums)
+  (-> (listof exact-integer?) boolean?)
+  (let ([n (length nums)])
+    (equal? (sort nums <)
+            (append (range 1 n) (list (sub1 n))))))
